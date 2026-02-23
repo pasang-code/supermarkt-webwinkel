@@ -14,6 +14,7 @@ Een lokale supermarkt wil haar diensten uitbreiden door een online platform met 
 ![Persona4](images/p4.png)
 
 ## 4. Conceptueel model
+![conceptueelModel](images/conceptueelmodel.png)
 
 ## 5. Wireframes
 ![wireframe main page](images/wf1.png)

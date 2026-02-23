@@ -8,10 +8,10 @@ Een lokale supermarkt wil haar diensten uitbreiden door een online platform met 
 ## 2. User story mapping
 ![userStoryMapping](images/storymap.png)
 ## 3. Persona's
-!([Persona1](images/p1.png)
-!([Persona2](images/p2.png)
-!([Persona3](images/p3.png)
-!([Persona4](images/p4.png)
+![Persona1](images/p1.png)
+![Persona2](images/p2.png)
+![Persona3](images/p3.png)
+![Persona4](images/p4.png)
 
 ## 4. Conceptueel model
 

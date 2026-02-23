@@ -7,6 +7,7 @@ Een lokale supermarkt wil haar diensten uitbreiden door een online platform met 
 
 ## 2. User story mapping
 ## 3. Persona's
+!([images/p1.png](https://github.com/FreeNoodles/grocery-delivery-webapp-spring/blob/main/images/p1.png))
 ## 4. Conceptueel model
 ## 5. Wireframes
 

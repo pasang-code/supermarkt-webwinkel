@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/header::head}">
+
+</head>
+<body>
+<nav th:replace="~{fragments/navbar::navigationBar}"> </nav>
+
+<main th:if="${merk}" th:object="${merk}">
+
+    <div class="container-fluid mx-auto" style="max-width: 70vw;">
+        <div class="quoteContainer p-5 text-end ">
+            <h2> Take your groceries, and we'll deliver them to you </h2></div>
+
+        <div class="row justify-content-between">
+
+            <div class="col-3 text-center">            <a class="btn btn-primary" th:href="@{/home}">Back</a>
+            </div>
+            <div class="search d-flex col-4 ">
+                <button class="btn btn-primary me-2 text-nowrap" type="submit">Search for products</button>
+                <input type="search" class="form-control">
+            </div>
+            <div class="col-3 text-center"> <a class="btn btn-primary" th:href="@{/p}">Previous</a>
+                <a class="btn btn-primary" >Next</a>
+            </div>
+        </div>
+
+
+        <div class="bg-light p-4 border rounded-3 mt-3" >
+            <div class="row justify-content-center my-5">
+
+                <img src="/img/banana.jpg" class="col-4">
+                <div class="col-8"> <h2 th:text="*{name}"> </h2>
+
+                    <p th:text="*{slogan}"> </p>
+                    <p th:text="*{'founded in ' +foundingYear}"></p>
+
+                    <div class="row g-3">
+                        <h4>Producten in voorraad:</h4>
+                        <div class="col-auto" th:each="product:*{products}">
+                            <div class="border rounded-3 bg-light p-2">
+                                <h5 th:text="${product.productNaam}"></h5>
+                                <p th:text="${product.categorie}"></p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</main>
+
+<main th:unless="${merk}">
+    <h2> Geen geldige merk gekozen</h2>
+
+</main>
+</body>
+</html>

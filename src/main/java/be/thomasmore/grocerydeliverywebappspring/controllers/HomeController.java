@@ -21,8 +21,8 @@ public class HomeController {
     }
 
     @GetMapping({"/home","/"})
-    public String home(Model model,@RequestParam(required = false) String naam, @RequestParam(required = false)Double gewicht,@RequestParam(required = false) Double minPrijs,@RequestParam(required = false) Double maxPrijs,@RequestParam(required = false) String categorie,@RequestParam(required = false) Boolean isBiologisch){
-        Iterable<Product> listProduct = productRepository.findByFilter(naam,gewicht,minPrijs,maxPrijs,categorie,isBiologisch);
+    public String home(Model model,@RequestParam(required = false) String naam, @RequestParam(required = false)Double gewicht,@RequestParam(required = false) Double minPrijs,@RequestParam(required = false) Double maxPrijs,@RequestParam(required = false) String categorie,@RequestParam(required = false) Boolean isBiologisch,@RequestParam(required = false) String searchQuery){
+        Iterable<Product> listProduct = productRepository.findByFilter(naam,gewicht,minPrijs,maxPrijs,categorie,isBiologisch,searchQuery);
         model.addAttribute("productlist",listProduct);
         return "home";
     }

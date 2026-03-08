@@ -1,9 +1,6 @@
 package be.thomasmore.grocerydeliverywebappspring.controllers.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
@@ -14,6 +11,46 @@ public class Product {
     private String productNaam;
     private String beschrijving;
     private Double prijs;
+    private Double gewicht;
+    private String categorie;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Merk merk;
+    private Boolean biologisch;
+
+
+
+    public Double getGewicht() {
+        return gewicht;
+    }
+
+    public void setGewicht(Double gewicht) {
+        this.gewicht = gewicht;
+    }
+
+    public String getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(String categorie) {
+        this.categorie = categorie;
+    }
+
+    public Merk getMerk() {
+        return merk;
+    }
+
+    public void setMerk(Merk merk) {
+        this.merk = merk;
+    }
+
+    public Boolean getBiologisch() {
+        return biologisch;
+    }
+
+    public void setBiologisch(Boolean biologisch) {
+        this.biologisch = biologisch;
+    }
+
     private String imageUrl;
 
     public String getImageUrl() {

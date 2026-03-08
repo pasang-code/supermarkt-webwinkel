@@ -2,6 +2,8 @@ package be.thomasmore.grocerydeliverywebappspring.controllers.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 public class Product {
 
@@ -12,12 +14,31 @@ public class Product {
     private String beschrijving;
     private Double prijs;
     private Double gewicht;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Category> categories;
     private String categorie;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Collection<Promotie> promoties;
     @ManyToOne(fetch = FetchType.LAZY)
     private Merk merk;
     private Boolean biologisch;
 
+    public Collection<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(Collection<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Collection<Promotie> getPromoties() {
+        return promoties;
+    }
+
+    public void setPromoties(Collection<Promotie> promoties) {
+        this.promoties = promoties;
+    }
 
     public Double getGewicht() {
         return gewicht;

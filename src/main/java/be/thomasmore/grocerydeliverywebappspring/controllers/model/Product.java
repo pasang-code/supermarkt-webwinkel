@@ -17,7 +17,6 @@ public class Product {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Category> categories;
-    private String categorie;
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Promotie> promoties;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,14 +45,6 @@ public class Product {
 
     public void setGewicht(Double gewicht) {
         this.gewicht = gewicht;
-    }
-
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
     }
 
     public Merk getMerk() {

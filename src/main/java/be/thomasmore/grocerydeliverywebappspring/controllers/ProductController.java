@@ -17,7 +17,7 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/productdetails{id}")
+    @GetMapping("/productdetails/{id}")
     public String venueDetails(Model model,@PathVariable Integer id)
     {
         Integer largestId = productRepository.findTopByOrderByIdDesc().getId();

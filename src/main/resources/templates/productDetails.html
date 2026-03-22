@@ -36,7 +36,11 @@
                     <h2>Beschrijving</h2>
                     <p th:text="*{beschrijving}"> </p>
                     <p th:text="*{gewicht +'g'}"></p>
-                    <p th:text="*{categorie}"></p>
+
+                    <div th:if="${#lists.size(product.categories) > 0}" th:each="category:${product.categories}">
+                        <button class="btn btn-success mb-1" th:text="${category.name}"></button>
+                    </div>
+
                     <a class="btn btn-secondary" th:text="*{merk.name}" th:href="@{/merkDetails/{id}(id=*{merk.id})}"></a>
                     <p th:text="*{'biologisch: '+biologisch}"></p>
 

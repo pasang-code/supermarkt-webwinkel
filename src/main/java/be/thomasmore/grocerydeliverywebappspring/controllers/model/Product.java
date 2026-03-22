@@ -10,18 +10,18 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String productNaam;
-    private String beschrijving;
-    private Double prijs;
-    private Double gewicht;
+    private String productName;
+    private String description;
+    private Double price;
+    private Double weight;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Category> categories;
     @ManyToMany(fetch = FetchType.LAZY)
-    private Collection<Promotie> promoties;
+    private Collection<Promotion> promotions;
     @ManyToOne(fetch = FetchType.LAZY)
-    private Merk merk;
-    private Boolean biologisch;
+    private Brand brand;
+    private Boolean organic;
 
     public Collection<Category> getCategories() {
         return categories;
@@ -31,36 +31,36 @@ public class Product {
         this.categories = categories;
     }
 
-    public Collection<Promotie> getPromoties() {
-        return promoties;
+    public Collection<Promotion> getPromotions() {
+        return promotions;
     }
 
-    public void setPromoties(Collection<Promotie> promoties) {
-        this.promoties = promoties;
+    public void setPromotions(Collection<Promotion> promotions) {
+        this.promotions = promotions;
     }
 
-    public Double getGewicht() {
-        return gewicht;
+    public Double getWeight() {
+        return weight;
     }
 
-    public void setGewicht(Double gewicht) {
-        this.gewicht = gewicht;
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
-    public Merk getMerk() {
-        return merk;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setMerk(Merk merk) {
-        this.merk = merk;
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
-    public Boolean getBiologisch() {
-        return biologisch;
+    public Boolean getOrganic() {
+        return organic;
     }
 
-    public void setBiologisch(Boolean biologisch) {
-        this.biologisch = biologisch;
+    public void setOrganic(Boolean organic) {
+        this.organic = organic;
     }
 
     private String imageUrl;
@@ -81,27 +81,27 @@ public class Product {
         this.id = id;
     }
 
-    public String getProductNaam() {
-        return productNaam;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProductNaam(String productNaam) {
-        this.productNaam = productNaam;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public String getBeschrijving() {
-        return beschrijving;
+    public String getDescription() {
+        return description;
     }
 
-    public void setBeschrijving(String beschrijving) {
-        this.beschrijving = beschrijving;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Double getPrijs() {
-        return prijs;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setPrijs(Double prijs) {
-        this.prijs = prijs;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

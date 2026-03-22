@@ -14,6 +14,7 @@ public interface ProductRepository extends CrudRepository<Product,Integer> {
 
     public Product findTopByOrderByIdAsc();
 
-    @Query("SELECT DISTINCT(p) FROM Product p LEFT  JOIN p.categories c WHERE (:naam IS NULL OR p.productNaam ILIKE CONCAT('%',:naam,'%') ) AND (:gewicht IS NULL OR p.gewicht >= :gewicht) AND (:minPrijs IS NULL OR (p.prijs >= :minPrijs)) AND (:maxPrijs IS NULL OR p.prijs <= :maxPrijs) AND (:categorie IS NULL or :categorie = '' or :categorie = c.name)  AND(:isBiologisch IS NULL OR p.biologisch = :isBiologisch) AND (:searchQuery IS NULL or p.productNaam ILIKE concat('%',:searchQuery,'%') )")
-    public List<Product> findByFilter(@Param("naam") String naam,@Param("gewicht") Double gewicht,@Param("minPrijs") Double minPrijs, @Param("maxPrijs") Double maxPrijs,@Param("categorie") String categorie, @Param("isBiologisch") Boolean isBiologisch,@Param("searchQuery") String searchQuery);
+
+    @Query("SELECT DISTINCT(p) FROM Product p LEFT JOIN p.categories c WHERE (:name IS NULL OR p.productName ILIKE CONCAT('%',:name,'%')) AND (:weight IS NULL OR p.weight >= :weight) AND (:minPrice IS NULL OR (p.price >= :minPrice)) AND (:maxPrice IS NULL OR p.price <= :maxPrice) AND (:category IS NULL or :category = '' or :category = c.name) AND (:isOrganic IS NULL OR p.organic = :isOrganic) AND (:searchQuery IS NULL or p.productName ILIKE concat('%',:searchQuery,'%'))")
+    public List<Product> findByFilter(@Param("name") String name, @Param("weight") Double weight, @Param("minPrice") Double minPrice, @Param("maxPrice") Double maxPrice, @Param("category") String category, @Param("isOrganic") Boolean isOrganic, @Param("searchQuery") String searchQuery);
 }

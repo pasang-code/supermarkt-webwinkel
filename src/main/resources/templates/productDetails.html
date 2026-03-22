@@ -14,50 +14,50 @@
 
         <div class="row justify-content-between">
 
-            <div class="col-3 text-center">            <a class="btn btn-primary" th:href="@{/home}">Back</a>
+            <div class="col-3 text-center">
+                <a class="btn btn-primary" th:href="@{/home}">Back</a>
             </div>
             <div class="search d-flex col-4 ">
                 <button class="btn btn-primary me-2 text-nowrap" type="submit">Search for products</button>
                 <input type="search" class="form-control">
             </div>
-            <div class="col-3 text-center"> <a class="btn btn-primary" th:href="@{/productdetails{id}(id=${product.id}-1)}">Previous</a>
+            <div class="col-3 text-center">
+                <a class="btn btn-primary" th:href="@{/productdetails{id}(id=${product.id}-1)}">Previous</a>
                 <a class="btn btn-primary" th:href="@{/productdetails{id}(id=${product.id}+1)}">Next</a>
             </div>
         </div>
 
-
-        <div class="bg-light p-4 border rounded-3 mt-3" >
+        <div class="bg-light p-4 border rounded-3 mt-3">
             <div class="row justify-content-center my-5">
 
                 <img src="/img/banana.jpg" class="col-4">
-                <div class="col-4"> <h2 th:text="*{productNaam}"> </h2>
-                <h3 th:text="*{prijs +' €'} "> </h3>
-                    <button class="btn btn-primary">Voeg toe aan winkelmandje</button>
-                    <h2>Beschrijving</h2>
-                    <p th:text="*{beschrijving}"> </p>
-                    <p th:text="*{gewicht +'g'}"></p>
+                <div class="col-4">
+                    <h2 th:text="*{productName}"></h2>
+                    <h3 th:text="*{price + ' €'}"></h3>
+                    <button class="btn btn-primary">Add to cart</button>
+                    <h2>Description</h2>
+                    <p th:text="*{description}"></p>
+                    <p th:text="*{weight + 'g'}"></p>
 
-                    <div th:if="${#lists.size(product.categories) > 0}" th:each="category:${product.categories}">
+                    <div th:if="${#lists.size(product.categories) > 0}" th:each="category : ${product.categories}">
                         <button class="btn btn-success mb-1" th:text="${category.name}"></button>
                     </div>
 
-                    <a class="btn btn-secondary" th:text="*{merk.name}" th:href="@{/merkDetails/{id}(id=*{merk.id})}"></a>
-                    <p th:text="*{'biologisch: '+biologisch}"></p>
+                    <a class="btn btn-secondary" th:text="*{brand.name}" th:href="@{/brandDetails/{id}(id=*{brand.id})}"></a>
+                    <p th:text="*{'organic: ' + organic}"></p>
 
                 </div>
 
             </div>
         </div>
 
-
     </div>
-
 
 </main>
 
 <main th:unless="${product}">
-<h2> Geen geldige product gekozen</h2>
-
+    <h2>No valid product selected</h2>
 </main>
+
 </body>
 </html>

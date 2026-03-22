@@ -20,46 +20,46 @@
                     <div class="modal-body">
 
                         <div class="row">
-                            <h3>naam</h3>
+                            <h3>name</h3>
                             <div class="col">
                                 <div class="input-group">
-                                    <input type="search" name="naam">
-                                    <span class="ms-2">naam</span>
+                                    <input type="search" name="name">
+                                    <span class="ms-2">name</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <h3>gewicht</h3>
+                            <h3>weight</h3>
                             <div class="col-auto">
                                 <div class="input-group">
-                                    <input type="number" class="form-control" name="gewicht" th:value="${param.gewicht}">
+                                    <input type="number" class="form-control" name="weight" th:value="${param.weight}">
                                     <span class="ms-2">gram</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <h3>prijs</h3>
+                            <h3>price</h3>
                             <div class="col-auto">
                                 <div class="input-group">
-                                    <input class="form-control" type="number" name="minPrijs">
-                                    <span>minPrijs</span>
+                                    <input class="form-control" type="number" name="minPrice">
+                                    <span>minPrice</span>
                                 </div>
                             </div>
                             <div class="col-auto">
                                 <div class="input-group">
-                                    <input class="form-control" type="number" name="maxPrijs">
-                                    <span>maxPrijs</span>
+                                    <input class="form-control" type="number" name="maxPrice">
+                                    <span>maxPrice</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <h3>categorie</h3>
+                            <h3>category</h3>
                             <div class="col-auto">
-                                <select name="categorie" class="form-select">
-                                    <option th:selected="${param.categorie == null or param.categorie == ''}" value="">Maakt niet uit</option>
+                                <select name="category" class="form-select">
+                                    <option th:selected="${param.category == null or param.category == ''}" value="">Maakt niet uit</option>
                                     <option value="Drank">Drank</option>
                                     <option value="Zuivel">Zuivel</option>
                                     <option value="Snacks">Snacks</option>
@@ -69,11 +69,11 @@
                         </div>
 
                         <div class="row border rounded-3">
-                            <h3>biologisch</h3>
+                            <h3>organic</h3>
                             <div th:each="val,iter : ${ {'true','false',''} }" class="col-auto">
                                 <div class="input-group border rounded-3">
-                                    <input type="radio" th:value="${val}" name="isBiologisch"
-                                           th:checked="${param.isBiologisch == null ? val == '' : param.isBiologisch[0] == val}">
+                                    <input type="radio" th:value="${val}" name="isOrganic"
+                                           th:checked="${param.isOrganic == null ? val == '' : param.isOrganic[0] == val}">
                                     <span class="ms-3" th:text="${val == 'true'} ? 'ja' : (${val == 'false'} ? 'nee' : 'maakt niet uit')"></span>
                                 </div>
                             </div>
@@ -137,8 +137,8 @@
                                 <div class="card h-100">
                                     <img src="/img/banana.jpg" alt="banana" class="card-img">
                                     <div class="card-body">
-                                        <h2 class="card-title" th:text="*{productNaam}"></h2>
-                                        <h3 th:text="|*{prijs} €|"></h3>
+                                        <h2 class="card-title" th:text="*{productName}"></h2>
+                                        <h3 th:text="|*{price} €|"></h3>
                                         <a class="btn btn-dark" th:href="@{/productdetails/{id}(id=${product.id})}">View more</a>
                                     </div>
                                 </div>

@@ -28,9 +28,15 @@ public class ShoppingCartController {
 
 
     @PostMapping("/shoppingcartAdd")
-    public String shoppingCartAddPost(@RequestParam Integer productId, @RequestParam Integer aantal,ShoppingCart cart){
+    public String shoppingCartAddPost(@RequestParam Integer productId, @RequestParam Integer quantity,@ModelAttribute("cart")
+    ShoppingCart cart){
 
-
+     Optional<Product> p = productRepository.findById(productId);
+     CartItem cartItem = new CartItem();
+     cartItem.setProduct(p.get());
+     cartItem.setCart(cart);
+     cartItem.setQuantity(quantity);
+     cartItemRepository.save(cartItem);
 
     return "redirect:/productdetails/"+productId;
     }
@@ -42,9 +48,35 @@ public class ShoppingCartController {
         return "redirect:/home";
     }
 
-    @GetMapping("/shoppingcart/{id}")
-    public String shoppingCart(Model model, @PathVariable(required = false) Integer id){
-        if (id==null) return "shoppingCart";
+    @PostMapping("/shoppingcartClear")
+    public String shoppingCartClearPost(){
+        cartItemRepository.deleteAll();
+        return "redirect:/shoppingcart";
+    }
+
+    @PostMapping("/shoppingcartRemove")
+    public String shoppingCartRemovePost(@RequestParam(required = false) Integer cartItemId){
+        cartItemRepository.deleteById(cartItemId);
+        return "redirect:/shoppingcart";
+    }
+
+    @PostMapping("/shoppingcartUpdate")
+    public String shoppingCartUpdatePost(Model model, @RequestParam(required = false) String decrease,@RequestParam(required = false) String action,@RequestParam(required = false) Integer itemId){
+        Optional<CartItem> item = cartItemRepository.findById(itemId);
+
+        if (item.isPresent()){
+            CartItem itemUpdate = item.get();
+            if (action.equals("increase")) itemUpdate.setQuantity(itemUpdate.getQuantity()+1);
+            if (action.equals("decrease")) itemUpdate.setQuantity(itemUpdate.getQuantity()-1);
+            cartItemRepository.save(itemUpdate);
+        }
+
+        return "redirect:/shoppingcart";
+    }
+
+    @GetMapping("/shoppingcart")
+    public String shoppingCart(Model model,@ModelAttribute("cart") ShoppingCart cart ){
+
 
         return "shoppingCart";
     }

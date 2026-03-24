@@ -66,10 +66,11 @@
                         <span class="fs-2 fw-bold" style="color: #2d6a2d;"
                               th:text="|€ *{price}|"></span>
                     </div>
-                    <form method="post" action="/shoppingcartAdd/{}">
+                    <form method="post" action="/shoppingcartAdd">
                     <!-- Add to cart -->
                         <label for="aantal">aantal:</label>
-                        <input type="number" name="aantal" id="aantal">
+                        <input type="number" name="quantity" id="aantal" class="rounded-1 mb-2 text-center" style="max-width: 10%">
+
                         <input type="hidden" th:value="${product.id}" name="productId">
                     <button class="btn fw-semibold w-100 mb-4 text-white"
                             style="background-color: #2d6a2d;" type="submit">

@@ -9,7 +9,7 @@ public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer aantal;
+    private Integer quantity;
 
     @ManyToOne
     private Product product;
@@ -32,12 +32,12 @@ public class CartItem {
         this.id = id;
     }
 
-    public Integer getAantal() {
-        return aantal;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setAantal(Integer aantal) {
-        this.aantal = aantal;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public ShoppingCart getCart() {

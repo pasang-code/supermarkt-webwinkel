@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="nl">
+<head th:replace="~{fragments/header::head}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body style="background-color: #f4f6f0;">
+
+<header th:insert="~{fragments/navbar::navigationBar}"></header>
+
+<!-- ══ TOOLBAR ══════════════════════════════════════════════════════════ -->
+<div class="py-2 px-3 bg-success">
+    <div class="container-fluid d-flex align-items-center gap-2">
+        <a class="btn btn-outline-light btn-sm" th:href="@{/home}">← Verder winkelen</a>
+    </div>
+</div>
+
+<!-- ══ MAIN ══════════════════════════════════════════════════════════════ -->
+<main class="container py-5 px-3">
+
+    <h2 class="fw-bold mb-4" style="color: #2d6a2d;">🛒 Winkelmandje</h2>
+
+    <!-- Non-empty cart -->
+    <div th:if="${not #lists.isEmpty(cart.items)}">
+        <div class="row g-4 align-items-start">
+
+            <!-- ── Cart items ── -->
+            <div class="col-12 col-lg-8">
+                <div class="bg-white rounded-3 shadow-sm overflow-hidden">
+
+                    <!-- Header row (desktop only) -->
+                    <div class="d-none d-md-flex px-4 py-2 border-bottom text-muted small fw-semibold text-uppercase"
+                         style="letter-spacing: 0.07em; font-size: 0.7rem; background-color: #f8faf6;">
+                        <div class="flex-grow-1">Product</div>
+                        <div style="width: 110px;" class="text-center">Aantal</div>
+                        <div style="width: 90px;" class="text-end">Prijs</div>
+                        <div style="width: 40px;"></div>
+                    </div>
+
+                    <!-- Cart item rows -->
+                    <div th:each="item : ${cart.items}" class="d-flex align-items-center gap-3 px-4 py-3 border-bottom cart-row">
+
+                        <!-- Image -->
+                        <div class="flex-shrink-0 rounded-2 overflow-hidden border"
+                             style="width: 70px; height: 70px; background:#f4f6f0;">
+                            <img th:src="${item.product.imageUrl}" alt="product"
+                                 style="width:100%; height:100%; object-fit:cover;" />
+                        </div>
+
+                        <!-- Name + brand -->
+                        <div class="flex-grow-1">
+                            <a th:href="@{/productdetails/{id}(id=${item.product.id})}"
+                               class="fw-bold text-decoration-none"
+                               style="color: #1a1a1a;"
+                               th:text="${item.product.productName}">Productnaam</a>
+                            <div class="small text-muted" th:text="${item.product.brand.name}">Merk</div>
+                            <span th:if="${item.product.organic}"
+                                  class="badge mt-1"
+                                  style="background-color: #2d6a2d; font-size: 0.65rem;">Biologisch</span>
+                        </div>
+
+                        <!-- Quantity form -->
+                        <form method="post" th:action="@{/shoppingcartUpdate}"
+                              class="d-flex align-items-center gap-1"
+                              style="width: 110px;">
+                            <input type="hidden" name="itemId" th:value="${item.id}" />
+                            <button type="submit" name="action" value="decrease"
+                                    class="btn btn-outline-secondary btn-sm rounded-2 px-2 py-1 lh-1">−</button>
+
+                            <input type="number" name="quantity" th:value="${item.quantity}"
+                                   class="form-control form-control-sm text-center rounded-2 "
+                                   style="width: 44px;" min="1" />
+                            <button type="submit" name="action" value="increase"
+                                    class="btn btn-outline-secondary btn-sm rounded-2 px-2 py-1 lh-1">+</button>
+
+                        </form>
+
+                        <!-- Line price -->
+                        <div class="fw-bold text-end" style="width: 90px; color: #2d6a2d;"
+                             th:text="|€ *{#numbers.formatDecimal(item.product.price * item.quantity, 1, 2)}|">€ 0.00</div>
+
+                        <!-- Remove button -->
+                        <form method="post" th:action="@{/shoppingcartRemove}" style="width: 40px;">
+                            <input type="hidden" name="cartItemId" th:value="${item.id}" />
+                            <button type="submit"
+                                    class="btn btn-sm btn-outline-danger rounded-2 px-2 py-1 lh-1"
+                                    title="Verwijderen">✕</button>
+                        </form>
+
+                    </div>
+                    <!-- end th:each -->
+
+                    <!-- Clear cart -->
+                    <div class="px-4 py-3 d-flex justify-content-end">
+                        <form method="post" th:action="@{/shoppingcartClear}">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary rounded-3">
+                                🗑 Mandje leegmaken
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- end non-empty -->
+
+    <!-- ── Empty cart state ── -->
+    <div th:if="${#lists.isEmpty(cart.items)}"
+         class="bg-white rounded-3 shadow-sm text-center py-5 px-3">
+        <p class="display-4 mb-3">🛒</p>
+        <h4 class="fw-bold mb-2" style="color: #1a1a1a;">Je winkelmandje is leeg</h4>
+        <p class="text-muted mb-4">Voeg producten toe om te beginnen met bestellen.</p>
+        <a th:href="@{/home}"
+           class="btn fw-semibold px-4 text-white rounded-3"
+           style="background-color: #2d6a2d;">
+            Ga naar de winkel
+        </a>
+    </div>
+
+</main>
+
+<footer class="bg-dark text-white text-center py-4 mt-5">
+    <small class="text-white-50">© 2026 Freshly — Vers aan jouw deur.</small>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

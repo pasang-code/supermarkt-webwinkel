@@ -15,29 +15,38 @@ INSERT INTO category (id, name, description, image_url, featured, display_order)
                                                                                      (6, 'Nieuwkomers', 'Nieuwe producten in ons assortiment', '/img/categories/nieuwkomers.jpg', true, 6),
                                                                                      (7, 'BestSellers', 'Onze meest populaire producten', '/img/categories/bestsellers.jpg', true, 7);
 
-
 INSERT INTO product
 (id, product_name, description, price, weight, brand_id, organic, image_url)
 VALUES
-    (1, 'Coca-Cola Classic 1.5L', 'Originele Coca-Cola frisdrank', 2.19, 1.5, 1, false, '/img/coca_cola_classic.jpg'),
+    (1, 'Coca-Cola Classic 1.5L', 'Originele Coca-Cola frisdrank', 2.19, 1.5, 1, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Coca-Cola+Classic&font=open-sans'),
 
-    (2, 'Coca-Cola Zero Sugar 1.5L', 'Cola zonder suiker', 2.19, 1.5, 1, false, '/img/coca_cola_zero.jpg'),
+    (2, 'Coca-Cola Zero Sugar 1.5L', 'Cola zonder suiker', 2.19, 1.5, 1, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Coca-Cola+Zero+Sugar&font=open-sans'),
 
-    (3, 'KitKat 4 Finger', 'Chocolade wafeltje', 1.39, 0.045, 2, false, '/img/kitkat.jpg'),
+    (3, 'KitKat 4 Finger', 'Chocolade wafeltje', 1.39, 0.045, 2, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=KitKat+4+Finger&font=open-sans'),
 
-    (4, 'Nescafé Classic Instant Coffee', 'Rijke instantkoffie', 5.49, 0.2, 2, false, '/img/nescafe.jpg'),
+    (4, 'Nescafé Classic Instant Coffee', 'Rijke instantkoffie', 5.49, 0.2, 2, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Nescafe+Classic&font=open-sans'),
 
-    (5, 'Activia Natural Yogurt', 'Probiotische yoghurt voor de spijsvertering', 2.69, 0.5, 3, false, '/img/activia.jpg'),
+    (5, 'Activia Natural Yogurt', 'Probiotische yoghurt voor de spijsvertering', 2.69, 0.5, 3, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Activia+Natural+Yogurt&font=open-sans'),
 
-    (6, 'Danone Greek Style Yogurt', 'Romige Griekse yoghurt', 2.49, 0.5, 3, false, '/img/danone_yogurt.jpg'),
+    (6, 'Danone Greek Style Yogurt', 'Romige Griekse yoghurt', 2.49, 0.5, 3, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Danone+Greek+Yogurt&font=open-sans'),
 
-    (7, 'Lay''s Classic Chips', 'Klassieke gezouten chips', 2.79, 0.2, 4, false, '/img/lays_classic.jpg'),
+    (7, 'Lay''s Classic Chips', 'Klassieke gezouten chips', 2.79, 0.2, 4, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Lays+Classic+Chips&font=open-sans'),
 
-    (8, 'Lay''s Paprika Chips', 'Chips met paprikasmaak', 2.79, 0.2, 4, false, '/img/lays_paprika.jpg'),
+    (8, 'Lay''s Paprika Chips', 'Chips met paprikasmaak', 2.79, 0.2, 4, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Lays+Paprika+Chips&font=open-sans'),
 
-    (9, 'Heinz Tomato Ketchup', 'Klassieke tomatenketchup', 3.69, 0.5, 5, false, '/img/heinz_ketchup.jpg'),
+    (9, 'Heinz Tomato Ketchup', 'Klassieke tomatenketchup', 3.69, 0.5, 5, false,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Heinz+Tomato+Ketchup&font=open-sans'),
 
-    (10, 'Heinz Organic Tomato Ketchup', 'Biologische tomatenketchup', 4.49, 0.5, 5, true, '/img/heinz_organic_ketchup.jpg');
+    (10, 'Heinz Organic Tomato Ketchup', 'Biologische tomatenketchup', 4.49, 0.5, 5, true,
+     'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Heinz+Organic+Ketchup&font=open-sans');
 
 INSERT INTO product_categories (products_id, categories_id) VALUES
 

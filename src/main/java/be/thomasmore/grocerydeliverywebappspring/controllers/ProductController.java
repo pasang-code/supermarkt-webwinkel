@@ -25,13 +25,13 @@ public class ProductController {
 
         if (id>largestId){
             id = lowestId;
-            return "redirect:/productdetails"+id;
+            return "redirect:/productdetails/"+id;
 
         }
 
         if (id<lowestId){
             id = largestId;
-            return "redirect:/productdetails"+id;
+            return "redirect:/productdetails/"+id;
         }
 
         Optional<Product> p1 = productRepository.findById(id);

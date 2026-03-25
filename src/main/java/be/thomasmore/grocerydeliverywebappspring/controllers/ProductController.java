@@ -18,7 +18,7 @@ public class ProductController {
     }
 
     @GetMapping("/productdetails/{id}")
-    public String venueDetails(Model model,@PathVariable Integer id)
+    public String productDetails(Model model,@PathVariable Integer id)
     {
         Integer largestId = productRepository.findTopByOrderByIdDesc().getId();
         Integer lowestId = productRepository.findTopByOrderByIdAsc().getId();
@@ -43,4 +43,5 @@ public class ProductController {
         return "productDetails";
 
     }
+
 }

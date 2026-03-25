@@ -49,11 +49,14 @@
                 <div class="bg-white rounded-3 shadow-sm p-4">
 
                     <!-- Brand link -->
+                    <div class="d-flex">
                     <a th:href="@{/brandDetails/{id}(id=*{brand.id})}"
                        class="text-decoration-none small fw-semibold border rounded-pill bg-warning px-3 py-2 "
                        style="color: #2d6a2d;"
                        th:text="*{brand.name}"></a>
 
+                    <a class="btn btn-danger text-white text-decoration-none rounded-3 ms-auto" th:href="@{/admin/productdetailsEdit/{id}(id=${product.id})}">Edit</a>
+                    </div>
                     <h1 class="fs-3 fw-bold mt-3 mb-1" th:text="*{productName}"></h1>
 
                     <!-- Organic badge -->
@@ -69,8 +72,8 @@
                     <form method="post" action="/shoppingcartAdd">
                     <!-- Add to cart -->
                         <label for="aantal">aantal:</label>
-                        <input type="number" name="quantity" id="aantal" class="rounded-1 mb-2 text-center" style="max-width: 10%">
-
+                        <input type="number" name="quantity" min="1" value="1" id="aantal" class="rounded-1 mb-2 text-center" style="max-width: 10%" th:classappend="(${invalidInput})?'border border-danger':''">
+                        <span th:if="${invalidInput}" class=" px-3 py-2 bg-danger text-white">Geen geldige aantal</span>
                         <input type="hidden" th:value="${product.id}" name="productId">
                     <button class="btn fw-semibold w-100 mb-4 text-white"
                             style="background-color: #2d6a2d;" type="submit">

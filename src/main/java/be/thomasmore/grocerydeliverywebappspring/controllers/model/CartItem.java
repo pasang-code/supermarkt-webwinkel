@@ -2,6 +2,9 @@ package be.thomasmore.grocerydeliverywebappspring.controllers.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class CartItem {
@@ -9,10 +12,13 @@ public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Min(1)
     private Integer quantity;
 
+    @NotNull
     @ManyToOne
     private Product product;
+    @NotNull
     @ManyToOne
     private ShoppingCart cart;
 

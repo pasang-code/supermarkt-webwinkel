@@ -1,6 +1,10 @@
 package be.thomasmore.grocerydeliverywebappspring.controllers.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.Collection;
 
@@ -10,17 +14,25 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank
     private String productName;
+    @NotBlank
     private String description;
+    @Min(0)
     private Double price;
+    @Min(0)
     private Double weight;
+
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Category> categories;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Promotion> promotions;
     @ManyToOne(fetch = FetchType.LAZY)
+
     private Brand brand;
+
     private Boolean organic;
 
     public Collection<Category> getCategories() {

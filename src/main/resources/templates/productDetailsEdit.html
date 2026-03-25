@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head th:replace="~{fragments/header::head}"></head>
+<body style="background-color: #f4f6f0;">
+
+<header th:insert="~{fragments/navbar::navigationBar}"></header>
+
+<main th:if="${product}" th:object="${product}">
+
+    <!-- TOOLBAR -->
+    <div class="py-2 px-3 bg-success">
+        <div class="container-fluid d-flex align-items-center justify-content-between gap-2 flex-wrap">
+            <a class="btn btn-outline-light btn-sm"
+               th:href="@{/productdetails/{id}(id=*{id})}">← Terug naar product</a>
+            <span class="text-white fw-semibold small opacity-75">Admin — Product bewerken</span>
+            <div style="width: 120px;"></div>
+        </div>
+    </div>
+
+
+    <div class="container py-4 px-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-7">
+                <div class="bg-white rounded-3 shadow-sm p-4">
+
+                    <h5 class="fw-bold mb-4" style="color: #2d6a2d;">✏️ Product bewerken</h5>
+
+                    <form th:action="@{/admin/productdetailsEdit/{id}(id=*{id})}"
+                          method="post"
+                          th:object="${product}">
+                        <div th:if="${#fields.hasErrors('productName')}" class=" text-center text-white bg-danger ">Geen geldige naam</div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small text-uppercase text-secondary">Productnaam</label>
+                            <input type="text" th:field="*{productName}" class="form-control rounded-3"/>
+                        </div>
+                        <div th:if="${#fields.hasErrors('description')}" class=" text-center text-white bg-danger ">Geen geldige beschrijving</div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small text-uppercase text-secondary">Omschrijving</label>
+                            <textarea th:field="*{description}" class="form-control rounded-3" rows="3"></textarea>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <div th:if="${#fields.hasErrors('price')}" class=" text-center text-white bg-danger ">Geen geldige prijs</div>
+
+                                <label class="form-label fw-semibold small text-uppercase text-secondary">Prijs</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">€</span>
+                                    <input type="number" step="0.01" th:field="*{price}" min="0.00" class="form-control rounded-end-3"/>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div th:if="${#fields.hasErrors('weight')}" class=" text-center text-white bg-danger ">Geen geldige prijs</div>
+
+                                <label class="form-label fw-semibold small text-uppercase text-secondary">Gewicht</label>
+                                <div class="input-group">
+                                    <input type="number" step="0.01" min="0.00" th:field="*{weight}" class="form-control rounded-start-3"/>
+                                    <span class="input-group-text">g</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label>merk</label>
+                            <div class="input-group">
+                                <select name="brand" style="width: 75%" class="form-control rounded-start-3">
+                                    <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}" th:selected="${brand.name.equals(product.brand.name)}"></option>
+                                </select>
+
+                            </div>
+                        </div>
+                            <div class="col-6">
+                                <label>categorie</label>
+                                <div>
+                                    <select multiple name="categories" style="width: 75%" class="form-control rounded-start-3">
+                                    <option th:each="category: ${categories}" th:selected="${#lists.contains(product.categories,category)}" th:value="${category.id}" th:text="${category.name}"></option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold small text-uppercase text-secondary">Afbeelding URL</label>
+                            <input type="text" th:field="*{imageUrl}" class="form-control rounded-3"/>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold small text-uppercase text-secondary">Biologisch</label>
+                            <div class="d-flex gap-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="organic" value="true" id="organicJa"
+                                           th:checked="*{organic == true}"/>
+                                    <label class="form-check-label" for="organicJa">Ja</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="organic" value="false" id="organicNee"
+                                           th:checked="*{organic == false}"/>
+                                    <label class="form-check-label" for="organicNee">Nee</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn fw-semibold text-white flex-grow-1"
+                                    style="background-color: #2d6a2d;">💾 Opslaan</button>
+                            <a th:href="@{/productdetails/{id}(id=*{id})}"
+                               class="btn btn-outline-secondary rounded-3">Annuleren</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<main th:unless="${product}" class="container py-5 text-center">
+    <h4 class="text-muted">Geen geldig product geselecteerd.</h4>
+    <a class="btn mt-3 text-white" style="background-color: #2d6a2d;" th:href="@{/home}">Terug naar overzicht</a>
+</main>
+
+<footer class="py-3 text-center small border-top" style="color: #6c6c6c;">
+    &copy; 2026 GroceryDelivery &mdash; Vers aan je deur
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

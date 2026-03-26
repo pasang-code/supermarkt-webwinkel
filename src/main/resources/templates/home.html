@@ -72,20 +72,20 @@
                             <div class="d-flex gap-3 mt-1">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" value="true"
-                                           name="isOrganic" id="bioYes"
-                                           th:checked="${param.isOrganic != null and param.isOrganic[0] == 'true'}" />
+                                           name="organic" id="bioYes"
+                                           th:checked="${param.organic != null and param.organic[0] == 'true'}" />
                                     <label class="form-check-label" for="bioYes">Ja</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" value="false"
-                                           name="isOrganic" id="bioNo"
-                                           th:checked="${param.isOrganic != null and param.isOrganic[0] == 'false'}" />
+                                           name="organic" id="bioNo"
+                                           th:checked="${param.organic != null and param.organic[0] == 'false'}" />
                                     <label class="form-check-label" for="bioNo">Nee</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" value=""
-                                           name="isOrganic" id="bioAny"
-                                           th:checked="${param.isOrganic == null or param.isOrganic[0] == ''}" />
+                                           name="organic" id="bioAny"
+                                           th:checked="${param.organic == null or param.organic[0] == ''}" />
                                     <label class="form-check-label" for="bioAny">Maakt niet uit</label>
                                 </div>
                             </div>
@@ -181,7 +181,7 @@
             <!-- Product grid -->
             <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 
-                <div class="col" th:each="product : ${productlist}" th:object="${product}">
+                <div class="col" th:each="product : ${products}" th:object="${product}">
                     <div class="bg-white rounded-3 shadow-sm overflow-hidden h-100 d-flex flex-column">
                         <img th:src="*{imageUrl}" src="/img/banana.jpg" alt="Product"
                              class="w-100 object-fit-cover" style="aspect-ratio: 4/3;" />
@@ -189,7 +189,7 @@
                             <h6 class="fw-bold mb-1" th:text="*{productName}">Productnaam</h6>
                             <p class="fw-semibold text-success mb-3" th:text="|€ *{price}|">€ 0.00</p>
                             <a class="btn btn-dark btn-sm rounded-3 mt-auto align-self-start"
-                               th:href="@{/productdetails/{id}(id=${product.id})}">
+                               th:href="@{/product-details/{id}(id=${product.id})}">
                                 Bekijken →
                             </a>
                         </div>

@@ -7,14 +7,13 @@ INSERT INTO brand (id, name, slogan, founding_year) VALUES
 
 
 INSERT INTO category (id, name, description, image_url, featured, display_order) VALUES
-                                                                                     (1, 'Drank', 'Frisdranken en koffie', '/img/categories/drank.jpg', false, 1),
-                                                                                     (2, 'Snacks', 'Chips en zoete snacks', '/img/categories/snacks.jpg', false, 2),
-                                                                                     (3, 'Zuivel', 'Yogurt en melkproducten', '/img/categories/zuivel.jpg', false, 3),
-                                                                                     (4, 'Sauzen', 'Sauzen en condiments', '/img/categories/sauzen.jpg', false, 4),
-                                                                                     (5, 'SuperDeals', 'Sterk afgeprijsde producten en tijdelijke acties', '/img/categories/superdeals.jpg', true, 5),
-                                                                                     (6, 'Nieuwkomers', 'Nieuwe producten in ons assortiment', '/img/categories/nieuwkomers.jpg', true, 6),
-                                                                                     (7, 'BestSellers', 'Onze meest populaire producten', '/img/categories/bestsellers.jpg', true, 7);
-
+                                                                                     (1, 'Drank', 'Frisdranken en koffie', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Drank&font=open-sans', false, 1),
+                                                                                     (2, 'Snacks', 'Chips en zoete snacks', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Snacks&font=open-sans', false, 2),
+                                                                                     (3, 'Zuivel', 'Yogurt en melkproducten', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Zuivel&font=open-sans', false, 3),
+                                                                                     (4, 'Sauzen', 'Sauzen en condiments', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Sauzen&font=open-sans', false, 4),
+                                                                                     (5, 'SuperDeals', 'Sterk afgeprijsde producten en tijdelijke acties', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=SuperDeals&font=open-sans', true, 5),
+                                                                                     (6, 'Nieuwkomers', 'Nieuwe producten in ons assortiment', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=Nieuwkomers&font=open-sans', true, 6),
+                                                                                     (7, 'BestSellers', 'Onze meest populaire producten', 'https://placehold.co/600x400/e8f5e9/2d6a4f?text=BestSellers&font=open-sans', true, 7);
 INSERT INTO product
 (id, product_name, description, price, weight, brand_id, organic, image_url)
 VALUES

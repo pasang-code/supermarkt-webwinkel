@@ -1,4 +1,5 @@
 package be.thomasmore.grocerydeliverywebappspring.controllers;
+
 import be.thomasmore.grocerydeliverywebappspring.controllers.model.Brand;
 import be.thomasmore.grocerydeliverywebappspring.repositories.BrandRepository;
 import org.springframework.stereotype.Controller;
@@ -17,12 +18,15 @@ public class BrandController {
         this.brandRepository = brandRepository;
     }
 
-    @GetMapping("/brandDetails/{id}")
-    public String brand(Model model, @PathVariable(required = false) Integer id) {
+    @GetMapping("/brand-details/{id}")
+    public String brandDetails(Model model, @PathVariable Integer id) {
         Optional<Brand> brand = brandRepository.findById(id);
 
-        if (brand.isPresent()) model.addAttribute("brand", brand.get());
-        return "brandDetails";
+        if (brand.isPresent()) {
+            model.addAttribute("brand", brand.get());
+        }
+
+        return "brand-details";
     }
 
 }

@@ -11,7 +11,7 @@
     <div class="py-2 px-3 bg-success">
         <div class="container-fluid d-flex align-items-center justify-content-between gap-2 flex-wrap">
             <a class="btn btn-outline-light btn-sm"
-               th:href="@{/productdetails/{id}(id=*{id})}">← Terug naar product</a>
+               th:href="@{/product-details/{id}(id=*{id})}">← Terug naar product</a>
             <span class="text-white fw-semibold small opacity-75">Admin — Product bewerken</span>
             <div style="width: 120px;"></div>
         </div>
@@ -25,7 +25,7 @@
 
                     <h5 class="fw-bold mb-4" style="color: #2d6a2d;">✏️ Product bewerken</h5>
 
-                    <form th:action="@{/admin/productdetailsEdit/{id}(id=*{id})}"
+                    <form th:action="@{/admin/product-details-edit/{id}(id=*{id})}"
                           method="post"
                           th:object="${product}">
                         <div th:if="${#fields.hasErrors('productName')}" class=" text-center text-white bg-danger ">Geen geldige naam</div>
@@ -109,7 +109,7 @@
                         <div class="d-flex gap-2">
                             <button type="submit" class="btn fw-semibold text-white flex-grow-1"
                                     style="background-color: #2d6a2d;">💾 Opslaan</button>
-                            <a th:href="@{/productdetails/{id}(id=*{id})}"
+                            <a th:href="@{/product-details/{id}(id=*{id})}"
                                class="btn btn-outline-secondary rounded-3">Annuleren</a>
                         </div>
 

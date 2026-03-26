@@ -32,13 +32,13 @@
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold small text-uppercase text-secondary">Productnaam</label>
-                            <input type="text" th:field="*{productName}" class="form-control rounded-3"/>
+                            <input type="text" th:field="*{productName}" class="form-control rounded-3" th:classappend="(${#fields.hasErrors('productName')})?' border rounded-2 border-danger':''"/>
                         </div>
                         <div th:if="${#fields.hasErrors('description')}" class=" text-center text-white bg-danger ">Geen geldige beschrijving</div>
 
                         <div class="mb-3">
                             <label class="form-label fw-semibold small text-uppercase text-secondary">Omschrijving</label>
-                            <textarea th:field="*{description}" class="form-control rounded-3" rows="3"></textarea>
+                            <textarea th:field="*{description}" class="form-control rounded-3" rows="3" th:classappend="(${#fields.hasErrors('description')})?' border rounded-2 border-danger':''"></textarea>
                         </div>
 
                         <div class="row g-3 mb-3">
@@ -46,16 +46,16 @@
                                 <div th:if="${#fields.hasErrors('price')}" class=" text-center text-white bg-danger ">Geen geldige prijs</div>
 
                                 <label class="form-label fw-semibold small text-uppercase text-secondary">Prijs</label>
-                                <div class="input-group">
+                                <div class="input-group" th:classappend="(${#fields.hasErrors('price')})?' border rounded-2 border-danger':''">
                                     <span class="input-group-text">€</span>
-                                    <input type="number" step="0.01" th:field="*{price}" min="0.00" class="form-control rounded-end-3"/>
+                                    <input type="number" step="0.01" th:field="*{price}" min="0.00" class="form-control rounded-end-3" />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div th:if="${#fields.hasErrors('weight')}" class=" text-center text-white bg-danger ">Geen geldige prijs</div>
 
                                 <label class="form-label fw-semibold small text-uppercase text-secondary">Gewicht</label>
-                                <div class="input-group">
+                                <div class="input-group" th:classappend="(${#fields.hasErrors('weight')})?' border rounded-2 border-danger':''">
                                     <input type="number" step="0.01" min="0.00" th:field="*{weight}" class="form-control rounded-start-3"/>
                                     <span class="input-group-text">g</span>
                                 </div>

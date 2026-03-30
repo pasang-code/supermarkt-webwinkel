@@ -21,5 +21,15 @@ Een lokale supermarkt wil haar diensten uitbreiden door een online platform met 
 ![wireframe main page](images/wf1.png)
 ![wireframe main page](images/wf2.png)
 
+## 6. Use-case diagram
+![Use-case-diagram] (images/usecases2.png)
 
+## 7. Activity diagram
+![Activity-diagram1] (images/activity1.png)
+![Activity-diagram1] (images/activity2.webp)
 
+## 8. Sequence diagram
+![Sequence-diagram] (images/sequence-diagram.png)
+
+## 9. Class diagram
+![Class-diagram] (images/klassediagram.png)

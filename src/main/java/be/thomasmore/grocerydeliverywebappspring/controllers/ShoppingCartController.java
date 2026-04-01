@@ -35,21 +35,25 @@ public class ShoppingCartController {
                                       @RequestParam(required = false) Integer quantity,
                                       @ModelAttribute("cart") ShoppingCart cart,
                                       Model model) {
-        if (quantity == null || quantity <= 0) {
-            Optional<Product> product = productRepository.findById(productId);
+        Optional<Product> product = productRepository.findById(productId);
+
+        if (quantity == null || quantity <= 0) {   /* server side validation of input quantity*/
             model.addAttribute("invalidInput", true);
-            model.addAttribute("product", product.get());
+            if (product.isPresent()) {
+                model.addAttribute("product", product.get());
+            }
             return "product-details";
         }
 
-        Optional<Product> product = productRepository.findById(productId);
-        CartItem cartItem = new CartItem();
-        cartItem.setProduct(product.get());
-        cartItem.setCart(cart);
-        cartItem.setQuantity(quantity);
-        cartItemRepository.save(cartItem);
-
+        if(product.isPresent()) {
+            CartItem cartItem = new CartItem();
+            cartItem.setProduct(product.get());
+            cartItem.setCart(cart);
+            cartItem.setQuantity(quantity);
+            cartItemRepository.save(cartItem);
+        }
         return "redirect:/product-details/" + productId;
+
     }
 
     @PostMapping("/shopping-cart-clear")

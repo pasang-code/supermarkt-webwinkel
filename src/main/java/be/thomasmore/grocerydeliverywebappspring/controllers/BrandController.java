@@ -18,8 +18,10 @@ public class BrandController {
         this.brandRepository = brandRepository;
     }
 
-    @GetMapping("/brand-details/{id}")
-    public String brandDetails(Model model, @PathVariable Integer id) {
+    @GetMapping({"/brand-details/{id}","/brand-details"})
+    public String brandDetails(Model model, @PathVariable(required = false) Integer id) {
+        if (id==null) return "brand-details";
+
         Optional<Brand> brand = brandRepository.findById(id);
 
         if (brand.isPresent()) {

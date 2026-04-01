@@ -18,8 +18,11 @@ public class ProductController {
         this.productRepository = productRepository;
     }
 
-    @GetMapping("/product-details/{id}")
-    public String productDetails(Model model, @PathVariable Integer id) {
+    @GetMapping({"/product-details/{id}","/product-details"})
+    public String productDetails(Model model, @PathVariable(required = false) Integer id) {
+
+        if (id==null) return "product-details";
+
         Integer highest = productRepository.findTopByOrderByIdDesc().getId();
         Integer lowest = productRepository.findTopByOrderByIdAsc().getId();
 

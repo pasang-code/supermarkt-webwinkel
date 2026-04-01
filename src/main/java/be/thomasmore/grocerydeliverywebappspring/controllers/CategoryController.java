@@ -18,9 +18,10 @@ public class CategoryController {
         this.categoryRepository = categoryRepository;
     }
 
-    @GetMapping("/category-details/{id}")
-    public String categoryDetails(Model model, @PathVariable Integer id) {
+    @GetMapping({"/category-details/{id}","/category-details"})
+    public String categoryDetails(Model model, @PathVariable(required = false) Integer id) {
 
+        if (id==null) return "category-details";
         Integer highest = categoryRepository.findTopByOrderByIdDesc().getId();
         Integer lowest = categoryRepository.findTopByOrderByIdAsc().getId();
 

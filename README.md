@@ -10,7 +10,6 @@ Een lokale supermarkt wil haar diensten uitbreiden door een online platform met 
 
 
 ## 4. Conceptueel model
-![conceptueelModel](images/conceptueelmodel.png)
 ![conceptueelModel2](images/conceptueelmodelsimpel.png)
 
 ## 5. Wireframes
